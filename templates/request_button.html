@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Request Blood</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Anton|Cabin" rel="stylesheet">
+    <!--Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <style>
+        h3{
+             font-family: Anton;
+             color: #b71c1c;
+             margin-top: 0px;
+         }
+         p{
+             font-family: Cabin;
+             font-size: 22px;
+         }
+         label{
+             font-size: 16px;
+         }
+         nav{
+            border-bottom: 4px solid #b71c1c;
+        }
+        .card{
+            align-content: center;
+            height: 923px;
+        }
+       #side-nav .card{
+           background-color: white;
+           height: 923px;
+        }
+        #side-nav .card a{
+            color: black;
+            padding: 12px;
+            display: block;
+            font-size: 20px;
+            font-family: Cabin;
+            border-bottom: 2px solid #b71c1c;
+        }
+        #side-nav .card a:hover{
+            background-color: #b71c1c;
+            color: white;
+        }
+        #person-icon{
+           padding: 4px;
+        }
+        #footer{
+    <!--background-image: url(../static/images/footer.jpg);-->
+    <!--background-position: center;-->
+    <!--background-size: cover;-->
+    background-color: #3c3c3c;
+    height: 500px;
+}
+    </style>
+</head>
+
+<body>
+
+    <header id="header">
+        <nav class="nav nav-wrapper transparent">
+            <div class="container">
+                <a href="/" class="brand-logo black-text">Medical Firm</a>
+                <ul class="right">
+                    <li><a class="black-text" href="#">Features</a></li>
+                    <li><a class="black-text" href="#">Tests</a></li>
+                    <li><a class="black-text" href="#">Genetics</a></li>
+                    <li><a class="black-text" href="/medical_library">Medical Library</a></li>
+                    <li><a href="" id="person-icon"><i class="material-icons red-text text-darken-4">person</i></a></li>
+                    <li><a class="black-text">{{request.user}}</a></li>
+                    <li><a href="{% url 'logout' %}" class="btn red darken-4">Log Out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section class="section">
+        <div class="row">
+            <div class="col m3 hide-on-small-and-down" id="side-nav">
+<!--                <div class="card">-->
+<!--                    <div class="card-content">-->
+<!--                            <a href="/view_patient">View all blood sample</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+            <div class="col m12 s12">
+                <div class="card">
+                    <div class="card-content">
+                        <form action="" method="post">
+                            {%csrf_token%}
+                            <h3>Request a Blood sample</h3>
+                            <div class="row">
+                                <div class="col m6 s12">
+                                    <div class="group">
+                                        <label for="pname"><b class="red-text text-darken-4">Name</b></label>
+                                        <input id="name" name="name" type="text" placeholder="Enter your Name" />
+                                    </div>
+                                </div>
+                                <div class="col m6 s12">
+                                    <div class="group">
+                                        <label for="blood_group"><b class="red-text text-darken-4">Blood Group</b></label>
+                                        <input id="blood_group" name="blood_group" type="text" placeholder="Enter Blood group" />
+                                    </div>
+                                </div>
+                                <div class="col m6 s12">
+                                    <div class="group">
+                                        <label for="dob"><b class="red-text text-darken-4">DOB</b></label>
+                                        <input id="dob" name="dob" type="text" placeholder="Enter DOB" />
+                                    </div>
+                                </div>
+                                <div class="col m6 s12">
+                                    <div class="group">
+                                        <label for="desc"><b class="red-text text-darken-4">Quantity</b></label>
+                                        <input id="quantity" name="quantity" type="text" placeholder="Enter Quantity" />
+                                    </div>
+                                </div>
+                                <div class="col m6 s12">
+                                    <div class="group">
+                                        <label for="desc"><b class="red-text text-darken-4">Description</b></label>
+                                        <input id="desc" name="desc" type="text" placeholder="Enter Description" />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <input type="submit" class="btn  red darken-4" value="submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+function getGender(){
+    var gender = document.getElementById("gender-select").value;
+    document.getElementById("gender").value = gender;
+}
+
+</script>
+</body>
+
+</html>
