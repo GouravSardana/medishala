@@ -59,7 +59,7 @@ def user_login(request):
                 if user.groups.filter(name='Hospital'):
                     return HttpResponseRedirect(reverse('patient_details'))
                 else:
-                    return HttpResponseRedirect(reverse('patient'))
+                    return HttpResponseRedirect(reverse('hosp_view'))
             else:
                 # If account is not active:
                 return HttpResponse("Your account is not active.")
@@ -158,5 +158,33 @@ class View_Patient(ListView):
         # features = User.objects.filter(groups__name='Doctor')
         req=Request_button.objects.all()
         return render(request, 'view_patient.html', {'req': req})
+
+
+class Hosp_view_blood(ListView):
+    model=Blood_Sample
+    template_name = 'hosp_view_patient.html'
+    # def get_queryset(self):
+    #     return Patient.objects.filter(provider=self.request.user).order_by('-id')
+    # def get_queryset(self):
+    #     return User.objects.filter(groups__name='Doctor')
+
+    def get(self, request, *args, **kwargs):
+        # features = User.objects.filter(groups__name='Doctor')
+        req=Request_button.objects.all()
+        return render(request, 'hosp_view_patient.html', {'req': req})
+
+
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            user=request.user
+            name = self.request.POST.get('name')
+            user_email=self.request.POST.get('user_email')
+            blood_group=self.request.POST.get('blood_group')
+            dob=self.request.POST.get('dob')
+            hospital=self.request.POST.get('hospital')
+            desc=self.request.POST.get('desc')
+            form = Blood_Sample(user=user, name=name, user_email=user_email, blood_group=blood_group, dob=dob, hospital=hospital, desc=desc)
+            form.save()
+            return HttpResponseRedirect(reverse('hosp_view'))
 
 

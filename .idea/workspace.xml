@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c87aa274-48cc-4823-aac1-8e0a159ad193" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/hosp_view_patient.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MediShala/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/MediShala/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/diseases.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patient-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/request_button.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/request_button.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/view_patient.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/view_patient.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
