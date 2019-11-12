@@ -7,20 +7,6 @@
 $ git clone https://github.com/GouravSardana/medishala
 ```
 
-## Prerequisites
-
-
-
-```
-- python3
-- python3-pip
-- virtualenvwrapper
-- postgresql
-- postgresql-contrib
-- python-dev
-- libpq-dev
-- django
-```
 
 
 
