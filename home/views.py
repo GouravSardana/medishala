@@ -27,9 +27,28 @@ class SignUp(TemplateView):
             email=self.request.POST.get('email')
             username = self.request.POST.get('username')
             password= self.request.POST.get('password')
-            form = User.objects.create_user(first_name=first_name, last_name=last_name,email=email, username=username,password=password)  # = wala model ka naam
-            form.save()
-            # User.groups.add(pk=1)
+            user = User.objects.create_user(first_name=first_name, last_name=last_name,email=email, username=username,password=password)  # = wala model ka naam
+            user.is_staff = True
+            user.save()
+            group = Group.objects.get(name='Receiver')
+            user.groups.add(group)
+            return HttpResponseRedirect(reverse('user_login'))
+
+
+class s_hosp(TemplateView):
+    template_name = 'signup.html'
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            first_name = self.request.POST.get('first_name')
+            last_name = self.request.POST.get('last_name')
+            email=self.request.POST.get('email')
+            username = self.request.POST.get('username')
+            password= self.request.POST.get('password')
+            user = User.objects.create_user(first_name=first_name, last_name=last_name,email=email, username=username,password=password)  # = wala model ka naam
+            user.is_staff = True
+            user.save()
+            group = Group.objects.get(name='Hospital')
+            user.groups.add(group)
             return HttpResponseRedirect(reverse('user_login'))
 
 
@@ -121,8 +140,11 @@ class Patient_details(TestMixin1, ListView):
             form.save()
             return HttpResponseRedirect(reverse('patient'))
 
+class TestMixin2(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.groups.filter(name='Receiver')
 
-class Request(ListView):
+class Request(TestMixin2, ListView):
     model = Request_button
     template_name = 'request_button.html'
 
