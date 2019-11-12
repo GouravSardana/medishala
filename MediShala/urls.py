@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from home import views
-from home.views import Home, SignUp, Patient_details, Medical_lib, View_Patient, Request
+from home.views import Home, SignUp, Patient_details, View_Patient, Request
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,7 +28,6 @@ urlpatterns = [
     path('request_button', Request.as_view(), name='request_button'),
     path('bloodsample/', Patient_details.as_view(), name='patient_details'),
     path('logout/', views.user_logout, name='logout'),
-    path('medical_library/', Medical_lib.as_view(), name='library'),
     path('view_patient/', View_Patient.as_view(), name='patient'),
 ]
 

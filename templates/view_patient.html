@@ -57,12 +57,8 @@
     <header id="header">
         <nav class="nav nav-wrapper transparent">
             <div class="container">
-                <a href="#" class="brand-logo black-text">Medical Firm</a>
+                <a href="#" class="brand-logo black-text">Medishala</a>
                 <ul class="right">
-                    <li><a class="black-text" href="#">Features</a></li>
-                    <li><a class="black-text" href="#">Tests</a></li>
-                    <li><a class="black-text" href="#">Genetics</a></li>
-                    <li><a class="black-text" href="/medical_library">Medical Library</a></li>
                     <li><a href="" id="person-icon"><i class="material-icons red-text text-darken-4">person</i></a></li>
                     <li><a class="black-text">{{request.user}}</a></li>
                     <li><a href="{% url 'logout' %}" class="btn red darken-4">Log Out</a></li>
@@ -85,23 +81,21 @@
                     <div class="card-content">
                     <table>
                             <tr class="red darken-4 white-text">
-                                <td><b>Patient Id</b></td>
                                 <td><b>Name</b></td>
-                                <td><b>Ref. Hospital</b></td>
-                                <td><b>Ref. Doctor</b></td>
-                                <td><b>IP No.</b></td>
-                                <td><b>Test</b></td>
-                                <td><b>Total</b></td>
+                                <td><b>Blood Group</b></td>
+                                <td><b>DOB</b></td>
+                                <td><b>Quantity</b></td>
+                                <td><b>Description</b></td>
                             </tr>
+                            {% for i in req%}
                             <tr>
-                                <td>1234567890</td>
-                                <td>Gourav Sardana</td>
-                                <td>Max Hospital</td>
-                                <td>Sakshat Lidhoo</td>
-                                <td>6780</td>
-                                <td>Fatti hui chut</td>
-                                <td>10 Cores</td>
+                                <td>{{i.name}}</td>
+                                <td>{{i.blood_group}}</td>
+                                <td>{{i.dob}}</td>
+                                <td>{{i.quantity}}</td>
+                                <td>{{i.desc}}</td>
                             </tr>
+                            {% endfor %}
                     </table>
                     </div>
                 </div>

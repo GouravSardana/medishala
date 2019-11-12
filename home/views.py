@@ -9,10 +9,10 @@ from django.views.generic import TemplateView
 
 from django.views.generic import TemplateView
 from django.contrib.auth import login,logout,authenticate
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic.list import ListView
-
-from home.models import Patient_Detail, Hospital, Medical_Library, Blood_Sample, Request_button
+from django.contrib.auth.mixins import UserPassesTestMixin
+from home.models import Blood_Sample, Request_button
 
 
 class Home(TemplateView):
@@ -56,12 +56,10 @@ def user_login(request):
                 # Log the user in.
                 login(request, user)
 
-                if user.groups.filter(name='Doctor'):
-                    return HttpResponse('Hey Doctor')
-                elif user.groups.filter(name='LabUser'):
+                if user.groups.filter(name='Hospital'):
                     return HttpResponseRedirect(reverse('patient_details'))
                 else:
-                    return HttpResponseRedirect(reverse('patient_details'))
+                    return HttpResponseRedirect(reverse('patient'))
             else:
                 # If account is not active:
                 return HttpResponse("Your account is not active.")
@@ -81,8 +79,21 @@ def user_logout(request):
     # Return to homepage.
     return HttpResponseRedirect(reverse('home'))
 
-@method_decorator(login_required, name='dispatch')
-class Patient_details(ListView):
+
+def not_in_student_group(user):
+    if user:
+        return user.groups.filter(name='Hospital').count() == 0
+    return False
+
+
+
+# @method_decorator(login_required, name='dispatch')
+class TestMixin1(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.groups.filter(name='Hospital')
+
+
+class Patient_details(TestMixin1, ListView):
     model=Blood_Sample
     template_name = 'patient-details.html'
     # def get_queryset(self):
@@ -128,20 +139,24 @@ class Request(ListView):
             return HttpResponseRedirect(reverse('patient'))
 
 
-class Medical_lib(ListView):
-    template_name = 'diseases.html'
-    model = Medical_Library
-
-    def get(self, request, *args, **kwargs):
-        library = Medical_Library.objects.all()
-        print(library)
-        return render(request, 'diseases.html', {'library': library})
+# class Medical_lib(ListView):
+#     template_name = 'diseases.html'
+#     model = Medical_Library
+#
+#     def get(self, request, *args, **kwargs):
+#         library = Medical_Library.objects.all()
+#         print(library)
+#         return render(request, 'diseases.html', {'library': library})
 
 
 @method_decorator(login_required, name='dispatch')
-class View_Patient(TemplateView):
+class View_Patient(ListView):
     template_name = 'view_patient.html'
 
 
+    def get(self, request, *args, **kwargs):
+        # features = User.objects.filter(groups__name='Doctor')
+        req=Request_button.objects.all()
+        return render(request, 'view_patient.html', {'req': req})
 
 

@@ -66,12 +66,8 @@
     <header id="header">
         <nav class="nav nav-wrapper transparent">
             <div class="container">
-                <a href="/" class="brand-logo black-text">Medical Firm</a>
+                <a href="/" class="brand-logo black-text">Medishala</a>
                 <ul class="right">
-                    <li><a class="black-text" href="#">Features</a></li>
-                    <li><a class="black-text" href="#">Tests</a></li>
-                    <li><a class="black-text" href="#">Genetics</a></li>
-                    <li><a class="black-text" href="/medical_library">Medical Library</a></li>
                     <li><a href="" id="person-icon"><i class="material-icons red-text text-darken-4">person</i></a></li>
                     <li><a class="black-text">{{request.user}}</a></li>
                     <li><a href="{% url 'logout' %}" class="btn red darken-4">Log Out</a></li>
@@ -98,37 +94,37 @@
                                 <div class="col m6 s12">
                                     <div class="group">
                                         <label for="pname"><b class="red-text text-darken-4">Name</b></label>
-                                        <input id="name" name="name" type="text" placeholder="Enter your Name" />
+                                        <input id="name" name="name" type="text" placeholder="Enter your Name" required />
                                     </div>
                                 </div>
                                 <div class="col m6 s12">
                                     <div class="group">
                                         <label for="user_email"><b class="red-text text-darken-4">Email</b></label>
-                                        <input id="user_email" name="user_email" type="text" placeholder="Enter Email" />
+                                        <input id="user_email" name="user_email" type="text" placeholder="Enter Email" required/>
                                     </div>
                                 </div>
                                 <div class="col m6 s12">
                                     <div class="group">
                                         <label for="blood_group"><b class="red-text text-darken-4">Blood Group</b></label>
-                                        <input id="blood_group" name="blood_group" type="text" placeholder="Enter Blood group" />
+                                        <input id="blood_group" name="blood_group" type="text" placeholder="Enter Blood group" required/>
                                     </div>
                                 </div>
                                 <div class="col m6 s12">
                                     <div class="group">
                                         <label for="dob"><b class="red-text text-darken-4">DOB</b></label>
-                                        <input id="dob" name="dob" type="text" placeholder="Enter DOB" />
+                                        <input id="dob" name="dob" type="text" placeholder="Enter DOB" required/>
                                     </div>
                                 </div>
                                 <div class="col m6 s12">
                                     <div class="group">
                                         <label for="desc"><b class="red-text text-darken-4">Hospital</b></label>
-                                        <input id="hospital" name="hospital" type="text" placeholder="Enter Hospital" />
+                                        <input id="hospital" name="hospital" type="text" placeholder="Enter Hospital"required />
                                     </div>
                                 </div>
                                 <div class="col m6 s12">
                                     <div class="group">
                                         <label for="desc"><b class="red-text text-darken-4">Description</b></label>
-                                        <input id="desc" name="desc" type="text" placeholder="Enter Description" />
+                                        <input id="desc" name="desc" type="text" placeholder="Enter Description" required />
                                     </div>
                                 </div>
 
