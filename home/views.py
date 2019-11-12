@@ -158,7 +158,7 @@ class Request(TestMixin2, ListView):
             desc=self.request.POST.get('desc')
             form = Request_button(name=name, blood_group=blood_group, dob=dob, quantity=quantity, desc=desc)
             form.save()
-            return HttpResponseRedirect(reverse('patient'))
+            return HttpResponseRedirect(reverse('hosp_view'))
 
 
 # class Medical_lib(ListView):
