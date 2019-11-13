@@ -183,7 +183,7 @@ class View_Patient(ListView):
 
 
 class Hosp_view_blood(ListView):
-    model=Blood_Sample
+    model=Blood_Sample, Request_button
     template_name = 'hosp_view_patient.html'
     # def get_queryset(self):
     #     return Patient.objects.filter(provider=self.request.user).order_by('-id')
@@ -192,8 +192,8 @@ class Hosp_view_blood(ListView):
 
     def get(self, request, *args, **kwargs):
         # features = User.objects.filter(groups__name='Doctor')
-        req=Request_button.objects.all()
-        return render(request, 'hosp_view_patient.html', {'req': req})
+        blood=Blood_Sample.objects.all()
+        return render(request, 'hosp_view_patient.html', {'blood': blood})
 
 
     def post(self, request, *args, **kwargs):

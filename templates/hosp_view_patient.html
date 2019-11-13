@@ -84,15 +84,15 @@
                                 <td><b>Name</b></td>
                                 <td><b>Blood Group</b></td>
                                 <td><b>DOB</b></td>
-                                <td><b>Quantity</b></td>
+                                <td><b>Hospital</b></td>
                                 <td><b>Description</b></td>
                             </tr>
-                            {% for i in req%}
+                            {% for i in blood%}
                             <tr>
                                 <td>{{i.name}}</td>
                                 <td>{{i.blood_group}}</td>
                                 <td>{{i.dob}}</td>
-                                <td>{{i.quantity}}</td>
+                                <td>{{i.hospital}}</td>
                                 <td>{{i.desc}}</td>
                             </tr>
                             {% endfor %}
